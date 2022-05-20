@@ -20,8 +20,8 @@
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
-    <script src="{{ asset('/javascript/script.js') }}"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/javascript/script.js"></script>
     <title>UniSoft | Segurança Cibernética</title>
 </head>
 
@@ -37,7 +37,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark">
         <a class="navbar-brand" href="#">
-            <img src="{{ asset('/imagens/logotipo.png') }}" alt="">
+            <img src="/imagens/logotipo.png" alt="">
             <!--NAVBAR LOGOTIPO-->
         </a>
 
@@ -227,7 +227,7 @@
                     </div>
                 </div>
                 <div class="col-5 teste mt-5 qmss">
-                    <img class="img-fluid" src="{{ asset('/imagens/QuemSomos.png') }}" alt="">
+                    <img class="img-fluid" src="/imagens/QuemSomos.png" alt="">
                 </div>
             </div>
         </div>
