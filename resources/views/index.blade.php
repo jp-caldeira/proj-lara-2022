@@ -109,26 +109,28 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post">
+                    <form method="POST" action={{ route('login')}}>
+                        @csrf
                         <div class="form-group">
                             <label for="exampleInputEmail1" class="font-weight-bold">Email</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1"
+                            <input type="email" name="email" class="form-control" id="exampleInputEmail1"
                                 aria-describedby="emailHelp" placeholder="Seu email">
                             <small id="emailHelp" class="form-text text-muted">Nunca vamos compartilhar seu
                                 email.</small>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1" class="font-weight-bold">Senha</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha">
+                            <input name="pass" type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha">
                         </div>
                         <div class="form-group form-check">
                             <a href="#contato"><small id="emailHelp" class="form-text text-right">Esqueceu sua
                                     senha?</small></a>
                         </div>
+                        <div class="btnsub">
+                                <button type="submit" class="btn btn-primary">ENTRAR</button></div>
+                        </div>
                     </form>
-                    <div class="btnsub"><a href="perfil.html"><button type="submit"
-                                class="btn btn-primary">ENTRAR</button></a></div>
-                </div>
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cadastromodal"
                         class="close" data-dismiss="modal" aria-label="Fechar">
