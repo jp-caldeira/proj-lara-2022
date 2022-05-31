@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TesteController;
 use App\Http\Controllers\UsuarioController;
@@ -26,6 +28,13 @@ Route::get('/politica', [HomeController::class, 'politica']);
 
 Route::get('/termos', [HomeController::class, 'termos']);
 
-Route::post('/login', [UsuarioController::class, 'login'])->name('login');
+//Route::get('/test', [TesteController::class, 'getTeste']);
 
-Route::get('/test', [TesteController::class, 'getTeste']);
+//Route::get('/hash', [TesteController::class, 'hash']);
+
+//Route::get('/usuarios', [TesteController::class, 'getUsuarios']);
+
+Route::post('/login', [LoginController::class, 'login'])->name('login');
+
+Route::post('/create-user', [RegisterController::class, 'create'])->name('cadastro');
+

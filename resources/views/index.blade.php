@@ -109,18 +109,18 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action={{ route('login')}}>
+                    <form method="POST" action={{ route('login') }}>
                         @csrf
                         <div class="form-group">
                             <label for="exampleInputEmail1" class="font-weight-bold">Email</label>
-                            <input type="email" name="email" class="form-control" id="exampleInputEmail1"
+                            <input type="" name="email" class="form-control" id="exampleInputEmail1"
                                 aria-describedby="emailHelp" placeholder="Seu email">
                             <small id="emailHelp" class="form-text text-muted">Nunca vamos compartilhar seu
                                 email.</small>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1" class="font-weight-bold">Senha</label>
-                            <input name="pass" type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha">
+                            <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha">
                         </div>
                         <div class="form-group form-check">
                             <a href="#contato"><small id="emailHelp" class="form-text text-right">Esqueceu sua
@@ -154,7 +154,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post">
+                    <form method="post" action={{ route('cadastro') }}>
                         <div class="form-group">
                             <label for="exampleInputEmail1" class="font-weight-bold">Email</label>
                             <input type="email" class="form-control" id="exampleInputEmail1"
@@ -178,12 +178,12 @@
                             <label for="validationCustom01" class="font-weight-bold">Telefone</label>
                             <input type="number" class="form-control" placeholder="Telefone">
                         </div>
-                    </form>
-                    <div class="btnsub">
+                        <div class="btnsub">
                         <button type="submit" class="btn btn-primary" class="close" data-dismiss="modal"
                             aria-label="Fechar" onclick="funcao1()" value="Exibir Alert">
                             CADASTRA-SE
-                        </button>
+                        </button
+                    </form>
                     </div>
                 </div>
             </div>
