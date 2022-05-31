@@ -57,7 +57,7 @@
                     <a class="dropdown-item" href="#"><i class="fa-solid fa-user pr-2"></i>Meus Dados</a>
                     <a class="dropdown-item" href="#"><i class="fa-solid fa-bag-shopping pr-2"></i>Serviços</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="index.html"><i
+                    <a class="dropdown-item" href={{ route('logout') }}><i
                             class="fa-solid fa-arrow-up-right-from-square pr-2"></i>Sair</a>
                 </div>
             </div>

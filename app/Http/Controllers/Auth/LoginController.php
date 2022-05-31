@@ -25,4 +25,11 @@ class LoginController extends Controller
 
         return "fail";
     }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        return view('index');
+    }
 }

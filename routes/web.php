@@ -36,5 +36,7 @@ Route::get('/termos', [HomeController::class, 'termos']);
 
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
 Route::post('/create-user', [RegisterController::class, 'create'])->name('cadastro');
 
