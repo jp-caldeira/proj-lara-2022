@@ -154,41 +154,55 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action={{ route('cadastro') }}>
+                    <form method="POST" action={{ route('cadastro') }}>
                         <div class="form-group">
+                            @csrf
                             <label for="exampleInputEmail1" class="font-weight-bold">Email</label>
                             <input type="email" class="form-control" id="exampleInputEmail1"
-                                aria-describedby="emailHelp" placeholder="Seu email">
+                                aria-describedby="emailHelp" placeholder="Seu email" name="email" value="{{ old('email') }}">
                             <small id="emailHelp" class="form-text text-muted">Nunca vamos compartilhar seu
                                 email.</small>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1" class="font-weight-bold">Senha</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha">
+                            <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Senha">
                         </div>
                         <div class="form-group">
                             <label for="validationCustom01" class="font-weight-bold">Nome completo</label>
-                            <input type="text" class="form-control" placeholder="Seu nome">
+                            <input type="text" class="form-control" placeholder="Seu nome" name="nome_completo" value="{{ old('nome_completo')}}">
                         </div>
                         <div class="form-group">
                             <label for="validationCustom01" class="font-weight-bold">Empresa</label>
-                            <input type="text" class="form-control" placeholder="Sua empresa">
+                            <input type="text" class="form-control" name="empresa" value="{{ old('empresa') }}"" placeholder="Sua empresa">
                         </div>
                         <div class="form-group">
                             <label for="validationCustom01" class="font-weight-bold">Telefone</label>
-                            <input type="number" class="form-control" placeholder="Telefone">
+                            <input type="number" class="form-control" name="telefone" value="{{ old('telefone') }}" value= placeholder="Telefone">
                         </div>
                         <div class="btnsub">
-                        <button type="submit" class="btn btn-primary" class="close" data-dismiss="modal"
-                            aria-label="Fechar" onclick="funcao1()" value="Exibir Alert">
+                        {{-- <button type="submit" class="btn btn-primary" class="close" data-dismiss="modal"
+                            aria-label="Fechar" /onclick="funcao1()"value="Exibir Alert">
                             CADASTRA-SE
-                        </button
+                        </button> --}}
+                        <button type="submit" class="btn btn-primary" class="close" value="Exibir Alert">
+                            CADASTRA-SE
+                        </button>
                     </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
 
     <!--CAROUSEL BANNER-->
 
