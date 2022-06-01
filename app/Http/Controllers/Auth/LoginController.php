@@ -23,13 +23,14 @@ class LoginController extends Controller
            return view('perfil');
        }
 
-        return "fail";
+       return redirect()->route('index');
+      
     }
 
     public function logout(Request $request)
     {
         Auth::logout();
 
-        return view('index');
+        return redirect()->route('index');
     }
 }

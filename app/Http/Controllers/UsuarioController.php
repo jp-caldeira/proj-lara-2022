@@ -2,27 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UsuarioController extends Controller
 {
-    public function login(Request $request)
-    {
-        
-        $senha = md5($request->pass);
 
-        return $senha;
-
-        //return view('perfil');
-    }
-
-    public function createUser(Request $request)
+    public function editUser(Request $request)
     {
         return $request;
     }
 
     public function getUser(Request $request)
     {
-        return $request;
+        $user = User::find($request->id);
+
+        return $user;
     }
 }

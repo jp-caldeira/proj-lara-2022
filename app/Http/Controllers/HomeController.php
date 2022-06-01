@@ -7,12 +7,15 @@ use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-    public function perfil(){
+    public function perfil()
+    {
         
         if(Auth::user()){
-            return view('perfil');
+            return Auth::user();
+            //return view('perfil');
         } else {
-            return view('index');
+            return "nope";
+            //return redirect()->route('index');
         }
 
         

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -37,7 +38,13 @@ class RegisterController extends Controller
 
         $usuario->save();
 
-        //redicionar para o perfil com as infos necessárias
+        $credentials = $usuario->only('email', 'password');
+
+        if (Auth::attempt($credentials)){
+           return view('perfil');
+       }
+
+        return redirect()->route('view');
 
 
     }

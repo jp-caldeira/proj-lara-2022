@@ -20,23 +20,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('index');
 
-Route::get('/perfil', [HomeController::class, 'perfil']);
+Route::get('/perfil', [HomeController::class, 'perfil'])->name('perfil');
 
 Route::get('/politica', [HomeController::class, 'politica']);
 
 Route::get('/termos', [HomeController::class, 'termos']);
-
-//Route::get('/test', [TesteController::class, 'getTeste']);
-
-//Route::get('/hash', [TesteController::class, 'hash']);
-
-//Route::get('/usuarios', [TesteController::class, 'getUsuarios']);
 
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::post('/create-user', [RegisterController::class, 'create'])->name('cadastro');
+
+//Route::post('')
 
