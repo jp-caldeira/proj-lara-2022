@@ -450,8 +450,7 @@
                     </svg>
                     <div class="card-body">
                         <h5 class="card-title">Convergent Firewall</h5>
-                        <p class="card-text mb-3">Thunder® CFW combina data center e firewall Gi / SGi, gateway de web
-                            seguro e VPN IPsec em uma única solução com todos os recursos Thunder ADC, CGN e SSLi.</p>
+                        <p class="card-text mb-3">Thunder® CFW combina data center e firewall Gi / SGi, gateway de web seguro e VPN IPsec em uma única solução com todos os recursos Thunder ADC, CGN e SSLi.</p>
                     </div>
                     <div class="card-footer">
                         <a class="producard" href="#" type="button" data-toggle="modal" data-target="#produto1">Ler Mais
@@ -555,9 +554,7 @@
                     </svg>
                     <div class="card-body">
                         <h5 class="card-title">CGNAT & IPv6</h5>
-                        <p class="card-text mb-3">Thunder® CGN (Carrier-Grade Networking) é uma solução premiada de alto
-                            desempenho para CGNAT avançada, preservação de IPv4 e migração de IPv6 com proteção DDoS
-                            integrada.</p>
+                        <p class="card-text mb-3">Thunder® CGN (Carrier-Grade Networking) é uma solução premiada de alto desempenho para CGNAT avançada, preservação de IPv4 e migração de IPv6 com proteção DDoS integrada.</p>
                     </div>
                     <div class="card-footer">
                         <a class="producard" href="#" type="button" data-toggle="modal" data-target="#produto5">Ler Mais
@@ -581,8 +578,7 @@
                     </svg>
                     <div class="card-body">
                         <h5 class="card-title">Service Analytics & Management</h5>
-                        <p class="card-text mb-3">O Harmony ™ Controller oferece gerenciamento e análise centralizados
-                            para serviços de aplicativos seguros em nuvens públicas, privadas e híbridas.</p>
+                        <p class="card-text mb-3">O Harmony ™ Controller oferece gerenciamento e análise centralizados para serviços de aplicativos seguros em nuvens públicas, privadas e híbridas.</p>
                     </div>
                     <div class="card-footer">
                         <a class="producard" href="#" type="button" data-toggle="modal" data-target="#produto6">Ler Mais
@@ -1166,5 +1162,11 @@
     </footer>
 
 </body>
-
+@if (count($errors) > 0)
+    <script>
+        $( document ).ready(function() {
+            $('#ExemploModalCentralizado').modal('show');
+        });
+    </script>
+@endif
 </html>

@@ -2,20 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Produto;
+use App\Models\Servico;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
+    public function index()
+    {
+        $produtos = Produto::all();
+        $servicos = Servico::all();
+
+        return view('index', ['produtos' => $produtos, 'servicos' => $servicos]);
+    }
+
     public function perfil()
     {
         
         if(Auth::user()){
-            return Auth::user();
-            //return view('perfil');
+            //return Auth::user();
+            return view('perfil');
         } else {
-            return "nope";
-            //return redirect()->route('index');
+            return redirect()->route('index');
         }
 
         

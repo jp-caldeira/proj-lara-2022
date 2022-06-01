@@ -19,4 +19,11 @@ class UsuarioController extends Controller
 
         return $user;
     }
+
+    public function allUsers()
+    {
+        $user = User::find(1);
+
+        return $user->servicos;
+    }
 }

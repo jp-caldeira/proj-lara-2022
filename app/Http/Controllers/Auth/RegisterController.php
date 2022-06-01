@@ -22,9 +22,7 @@ class RegisterController extends Controller
 
 
         if($validator->fails()){
-            // return redirect('post/create')
-            // ->withErrors($validator);
-            return 'failed';
+            return redirect()->route('index')->withErrors($validator);
         } 
 
         $usuario = new User();
@@ -45,7 +43,6 @@ class RegisterController extends Controller
        }
 
         return redirect()->route('view');
-
 
     }
 }

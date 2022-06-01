@@ -39,12 +39,13 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    // /**
-    //  * The attributes that should be cast.
-    //  *
-    //  * @var array<string, string>
-    //  */
-    // protected $casts = [
-    //     'email_verified_at' => 'datetime',
-    // ];
+    public function produtos()
+    {
+        return $this->belongsToMany(Produto::class, 'user_produto', 'usuario_id', 'produto_id');
+    }
+
+    public function servicos()
+    {
+        return $this->belongsToMany(Servico::class, 'user_servico', 'usuario_id', 'servico_id');
+    }
 }
