@@ -154,6 +154,14 @@
                     </button>
                 </div>
                 <div class="modal-body">
+                            @if(session()->has('errorLogin'))
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <span>{{ session()->get('errorLogin') }}</span>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            @endif
                     <form method="POST" action={{ route('cadastro') }}>
                         <div class="form-group">
                             @csrf
@@ -212,18 +220,7 @@
     @endif
         
 
-        @if(session()->has('errorLogin'))
-            <div class="alert alert-danger">
-                <p>erro no login:</p>
-                {{ session()->get('errorLogin') }}
-            </div>
-        @endif
 
-
-
-        {{-- @if($erroLogin)
-            <span>erro login</span>
-        @endif --}}
 
     <!--CAROUSEL BANNER-->
 
