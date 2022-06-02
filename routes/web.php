@@ -54,4 +54,3 @@ Route::get('/servicos', [ServicoController::class, 'getAllServices']);
 
 
 
-

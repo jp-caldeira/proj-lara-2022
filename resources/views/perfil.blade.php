@@ -107,7 +107,7 @@
                                 <div class="form-group pt-3">
                                     <label for="exampleInputEmail1">E-mail</label>
                                     <input type="email" class="form-control" id="exampleInputEmail1"
-                                        aria-describedby="emailHelp" placeholder="Seu email">
+                                        aria-describedby="emailHelp" placeholder="Seu email" value={{ Auth::user()->email }}>
                                     <small id="emailHelp" class="form-text text-muted mb-4">Não é você? <a
                                             href="#">Clique aqui</a> para sair!</small>
                                 </div>

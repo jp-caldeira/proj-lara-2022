@@ -20,7 +20,7 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
 
        if (Auth::attempt($credentials)){
-           return view('perfil');
+           return Auth::user();
        }
 
        return redirect()->route('index');
