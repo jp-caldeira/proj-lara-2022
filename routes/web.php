@@ -38,7 +38,11 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::post('/create-user', [RegisterController::class, 'create'])->name('cadastro');
 
-Route::get('/users', [UsuarioController::class, 'allUsers']);
+//Route::get('/users', [UsuarioController::class, 'allUsers']);
+
+Route::get('/edit-user', [UsuarioController::class, 'editUser'])->name('edit-perfil');
+
+Route::post('/update-user', [UsuarioController::class, 'updateUser'])->name('update-user');
 
 //Produtos
 

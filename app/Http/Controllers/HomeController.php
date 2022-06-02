@@ -34,7 +34,7 @@ class HomeController extends Controller
     {
         
         if(Auth::user()){
-            return view('perfil');
+            return view('perfil', ['user' => Auth::user()]);
         } else {
             return redirect()->route('index');
         }

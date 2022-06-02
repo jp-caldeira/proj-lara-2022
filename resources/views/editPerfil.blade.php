@@ -67,7 +67,7 @@
     <!--INFORMAÇÕES DO CLIENTE-->
     <div class="informacoes">
         <div class="container">
-            <h1 class="titulo">Minha Conta</h1>
+            <h1 class="titulo">Editar Dados</h1>
             <hr>
             <!--CARD DE INFORMAÇÕES (HEADER)-->
             <div class="card dadclient">
@@ -79,25 +79,13 @@
                                 <p>Meus Dados</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#Servicos" role="tab"
-                                aria-controls="Servicos" aria-selected="false"><i
-                                    class="fa-solid fa-bag-shopping pr-1"></i>
-                                <p>Serviços Contratados</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#Produtos" role="tab"
-                                aria-controls="Produtos" aria-selected="false"><i class="fa-solid fa-box-open pr-1"></i>
-                                <p>Produtos Contratados</p>
-                            </a>
-                        </li>
                     </ul>
                 </div>
                 <!--CARD DE INFORMAÇÕES (CONTEUDO MEUS DADOS)-->
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="Dados" role="tabpanel" aria-labelledby="Dados-tab">
-                        <form>
+                        <form method='POST' action={{ route('update-user') }}>
+                            @csrf
                             <div class="container">
                                 <div class="profilediv">
                                     <img src="imagens/Perfil/UserProfile.png" alt="..."
@@ -105,11 +93,10 @@
                                 </div>
 
                                 <div class="form-group pt-3">
+                                    <input type='hidden' name="id" value={{ $user->id }}>
                                     <label for="exampleInputEmail1">E-mail</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1"
-                                        aria-describedby="emailHelp" placeholder="Seu email" value={{ $user->email }} disabled>
-                                    <small id="emailHelp" class="form-text text-muted mb-4">Não é você? <a
-                                            href="/logout">Clique aqui</a> para sair!</small>
+                                    <input type="email" class="form-control" id="exampleInputEmail1" name='email'
+                                        aria-describedby="emailHelp" placeholder="Seu email" value="{{ old('email', $user->email) }}">
                                 </div>
                             </div>
                             <hr class="hrdados">
@@ -118,75 +105,28 @@
                                     <div class="row">
                                         <div class="col">
                                             <label for="exampleInputEmail1">Nome completo</label>
-                                            <input type="text" class="form-control" id="exampleInputNome" value={{ $user->nome_completo }} disabled>
+                                            <input type="text" name='nome_completo' class="form-control" id="exampleInputNome" value="{{ old('nome_completo', $user->nome_completo) }}">
                                         </div>
                                         <div class="col">
                                             <label class="ml-3" for="exampleInputEmail1">Empresa</label>
-                                            <input type="text" class="form-control" id="exampleInputSNome" value={{ $user->empresa }} disabled>
+                                            <input type="text" name='empresa' class="form-control" id="exampleInputSNome" value="{{ old('empresa', $user->empresa) }}">
                                         </div>
                                         <div class="col">
                                             <label class="ml-3" for="exampleInputEmail1">Telefone</label>
-                                            <input type="text" class="form-control" id="exampleInputSNome" value={{ $user->telefone }} disabled>
+                                            <input type="text" name='telefone' class="form-control" id="exampleInputSNome" value="{{ old('telefone', $user->telefone) }}">
                                         </div>
                                     </div>
                                 </div>
-                                <div class='row mb-2'>
-                                        <div class="col">
-                                            <div class='btn-sub'>
-                                                <a href="/edit-user">
-                                                    <button type="button" class="btn btn-primary">EDITAR DADOS</button>
-                                                </a>
-                                            </div>
+                            <div class='row mb-2'>
+                                    <div class="col">
+                                        <div class='btn-sub'>
+                                            <button type="submit" class="btn btn-primary">Salvar Dados</button>
                                         </div>
-                                </div>
+                                    </div>
+                            </div>
                         </form>
                     </div>
                 </div>
-                <!--CARD DE INFORMAÇÕES (CONTEUDO SERVIÇOS CONTRATADOS)-->
-                <div class="tab-pane fade" id="Servicos" role="tabpanel" aria-labelledby="Servicos-tab">
-                    <div class="container">
-                        <h2 class="titulo2">Serviços</h2>
-                        <div class="card-deck">
-                            <div class="card">
-                                <div class="card-header">Cabeçalho</div>
-                                <div class="card-body">
-                                    <p class="card-text">Este é um card mais longo com suporte a texto embaixo, que
-                                        funciona como uma introdução a um conteúdo adicional. Este conteúdo é um pouco
-                                        maior.</p>
-                                </div>
-                                <div class="card-footer d-flex justify-content-center">
-                                    <a href="https://wa.me/+5511974551685?text=Olá!%20Meu%20nome%20é%20...%20da%20empresa%20...%20e%20gostaria%20de%20suporte%20no%20serviço%20...%20por%20favor!" target="_blank"><button type="button" class="d-inline btn btn-primary btn-sm suport mr-3"><i class="fa-solid fa-headset"></i> Suporte</button></a>
-                                    <button type="button" class="d-inline btn btn-primary btn-sm cancel"><i
-                                            class="fa-solid fa-ban"></i> Cancelar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--CARD DE INFORMAÇÕES (CONTEUDO PRODUTOS CONTRATADOS)-->
-                <div class="tab-pane fade" id="Produtos" role="tabpanel" aria-labelledby="Produtos-tab">
-                    <div class="container">
-                        <h2 class="titulo2">Produtos</h2>
-                        <div class="card-deck">
-                            <div class="card">
-                                <div class="card-header">Cabeçalho</div>
-                                <div class="card-body">
-                                    <p class="card-text">Este é um card mais longo com suporte a texto embaixo, que
-                                        funciona como uma introdução a um conteúdo adicional. Este conteúdo é um pouco
-                                        maior.</p>
-                                </div>
-                                <div class="card-footer d-flex justify-content-center">
-                                    <a href="https://wa.me/+5511974551685?text=Olá!%20Meu%20nome%20é%20...%20da%20empresa%20...%20e%20gostaria%20de%20suporte%20no%20produto%20...%20por%20favor!" target="_blank"><button type="button" class="d-inline btn btn-primary btn-sm suport mr-3"><i class="fa-solid fa-headset"></i> Suporte</button></a>
-                                    <button type="button" class="d-inline btn btn-primary btn-sm cancel"><i
-                                            class="fa-solid fa-ban"></i> Cancelar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <!--CARD DE SUGESTÕES-->
     <div class="sugestoes">
         <div class="container">

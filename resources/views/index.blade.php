@@ -113,7 +113,7 @@
                         @csrf
                         <div class="form-group">
                             <label for="exampleInputEmail1" class="font-weight-bold">Email</label>
-                            <input type="" name="email" class="form-control" id="exampleInputEmail1"
+                            <input type="email" name="email" class="form-control" id="exampleInputEmail1"
                                 aria-describedby="emailHelp" placeholder="Seu email">
                             <small id="emailHelp" class="form-text text-muted">Nunca vamos compartilhar seu
                                 email.</small>
@@ -194,15 +194,36 @@
         </div>
     </div>
 
-    @if ($errors->any())
+    @if ($errors->cadastro->any())
+        <p>erro no cadastro</p>
     <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
+        @if($errors->cadastro->has('nome_completo'))
+            <span>{{ $errors->cadastro->first('nome_completo') }}</span>
+        @endif
     </div>
     @endif
+
+    @if ($errors->login->any())
+    <div class="alert alert-danger">
+        @if($errors->login->has('email'))
+            <span>{{ $errors->login->first('email') }}</span>
+        @endif
+    </div>
+    @endif
+        
+
+        @if(session()->has('errorLogin'))
+            <div class="alert alert-danger">
+                <p>erro no login:</p>
+                {{ session()->get('errorLogin') }}
+            </div>
+        @endif
+
+
+
+        {{-- @if($erroLogin)
+            <span>erro login</span>
+        @endif --}}
 
     <!--CAROUSEL BANNER-->
 
@@ -833,8 +854,8 @@
                 <div class="footer-col col-md-3">
                     <h4>SUPORTE</h4>
                     <ul>
-                        <li><a href="politica.html" target="_blank">Política de Privacidade</a></li>
-                        <li><a href="termos.html" target="_blank">Termos e Condições</a></li>
+                        <li><a href="/politica" target="_blank">Política de Privacidade</a></li>
+                        <li><a href="/termos" target="_blank">Termos e Condições</a></li>
                         <li><a href="#contato">Suporte Técnico</a></li>
                     </ul>
                 </div>
@@ -852,11 +873,19 @@
     </footer>
 
 </body>
-{{-- @if (count($errors) > 0)
-    <script>
-        $( document ).ready(function() {
-            $('#ExemploModalCentralizado').modal('show');
-        });
-    </script>
-@endif --}}
+    @if ($errors->cadastro->any())
+        <script>
+            $( document ).ready(function() {
+                $('#cadastromodal').modal('show');
+            });
+        </script>
+    @endif
+
+    @if($errors->login->any() || session()->has('errorLogin'))
+        <script>
+            $( document ).ready(function() {
+                $('#ExemploModalCentralizado').modal('show')
+            });
+        </script>
+    @endif
 </html>

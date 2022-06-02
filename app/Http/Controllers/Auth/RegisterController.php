@@ -14,16 +14,28 @@ class RegisterController extends Controller
 {
     public function create(Request $request)
     {
-        $validator = Validator::make($request->all(),[
+        $rules = [
             'email' => 'required|email|unique:usuarios',
             'nome_completo' => 'required|string',
             'password' => 'required|string|min:6'
-        ]);
+        ];
 
+        $messages = [
+            'email.required' => 'Email é obrigatório!',
+            'email.email' => 'Digite um email válido!',
+            'email.unique' => 'Este e-mail já está cadastrado',
+            'nome_completo.required' => 'O nome não pode ser vazio!', 
+            'password.required' => 'Senha não pode ser vazio',
+            'password.min' => 'A senha deve ter pelo menos 6 caracteres'
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
 
         if($validator->fails()){
-            return redirect()->route('index')->withErrors($validator);
+            return redirect()->route('index')->withErrors($validator, 'cadastro');
         } 
+
+        dd($request);
 
         $usuario = new User();
 
@@ -42,7 +54,7 @@ class RegisterController extends Controller
            return view('perfil');
        }
 
-        return redirect()->route('view');
+        return redirect()->route('index');
 
     }
 }
