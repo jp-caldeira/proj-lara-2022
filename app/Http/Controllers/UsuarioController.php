@@ -34,6 +34,7 @@ class UsuarioController extends Controller
         $messages = [
             'email.required' => 'Email é obrigatório!',
             'email.email' => 'Digite um email válido!',
+            'email.unique' => 'Este email já foi cadastrado',
             'nome_completo.required' => 'O nome não pode ser vazio!'
         ];
 

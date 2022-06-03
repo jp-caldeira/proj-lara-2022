@@ -37,7 +37,6 @@ class LoginController extends Controller
         }
 
         return redirect()->route('index')->with(['errorLogin' => 'Credenciais inválidas!']);
-        //return redirect()->route('index')->withErrors($validator, 'login');
       
     }
 

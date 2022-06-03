@@ -97,6 +97,14 @@
                                     <label for="exampleInputEmail1">E-mail</label>
                                     <input type="email" class="form-control" id="exampleInputEmail1" name='email'
                                         aria-describedby="emailHelp" placeholder="Seu email" value="{{ old('email', $user->email) }}">
+                                   @error('email')
+                                        <br/>
+                                        <div class="alert alert-danger alert-dismissible fade show">
+                                            <span><small>{{ $message }}</small></span>
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </div>
+                                    @enderror
                                 </div>
                             </div>
                             <hr class="hrdados">
@@ -106,6 +114,14 @@
                                         <div class="col">
                                             <label for="exampleInputEmail1">Nome completo</label>
                                             <input type="text" name='nome_completo' class="form-control" id="exampleInputNome" value="{{ old('nome_completo', $user->nome_completo) }}">
+                                            @error('nome_completo')
+                                                <br/>
+                                                <div class="alert alert-danger alert-dismissible fade show">
+                                                    <span><small>{{ $message }}</small></span>
+                                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </div>
+                                            @enderror
                                         </div>
                                         <div class="col">
                                             <label class="ml-3" for="exampleInputEmail1">Empresa</label>

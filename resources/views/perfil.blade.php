@@ -67,6 +67,15 @@
     <!--INFORMAÇÕES DO CLIENTE-->
     <div class="informacoes">
         <div class="container">
+            @if(session()->has('message'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <span>{{ session()->get('message') }}</span>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                     </button>
+                </div>
+            @endif
+            
             <h1 class="titulo">Minha Conta</h1>
             <hr>
             <!--CARD DE INFORMAÇÕES (HEADER)-->
@@ -118,15 +127,15 @@
                                     <div class="row">
                                         <div class="col">
                                             <label for="exampleInputEmail1">Nome completo</label>
-                                            <input type="text" class="form-control" id="exampleInputNome" value={{ $user->nome_completo }} disabled>
+                                            <input type="text" class="form-control" id="exampleInputNome" value="{{ $user->nome_completo }}" disabled>
                                         </div>
                                         <div class="col">
                                             <label class="ml-3" for="exampleInputEmail1">Empresa</label>
-                                            <input type="text" class="form-control" id="exampleInputSNome" value={{ $user->empresa }} disabled>
+                                            <input type="text" class="form-control" id="exampleInputSNome" value="{{ $user->empresa }}" disabled>
                                         </div>
                                         <div class="col">
                                             <label class="ml-3" for="exampleInputEmail1">Telefone</label>
-                                            <input type="text" class="form-control" id="exampleInputSNome" value={{ $user->telefone }} disabled>
+                                            <input type="text" class="form-control" id="exampleInputSNome" value="{{ $user->telefone }}" disabled>
                                         </div>
                                     </div>
                                 </div>

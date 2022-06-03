@@ -109,6 +109,14 @@
                     </button>
                 </div>
                 <div class="modal-body">
+                        @if(session()->has('errorLogin'))
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <span>{{ session()->get('errorLogin') }}</span>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            @endif
                     <form method="POST" action={{ route('login') }}>
                         @csrf
                         <div class="form-group">
@@ -117,10 +125,27 @@
                                 aria-describedby="emailHelp" placeholder="Seu email">
                             <small id="emailHelp" class="form-text text-muted">Nunca vamos compartilhar seu
                                 email.</small>
+                                {{-- @if ($errors->login->any()) --}}
+                                @if($errors->login->has('email'))
+                                    <div class="alert alert-danger alert-dismissible fade show">
+                                            <span><small>{{ $errors->login->first('email') }}</small></span>
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                    </div>
+                                    @endif
+                                {{-- @endif --}}
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1" class="font-weight-bold">Senha</label>
                             <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha">
+                                    @if($errors->login->has('password'))
+                                        <br/>
+                                        <div class="alert alert-danger alert-dismissible fade show">
+                                            <span><small>{{ $errors->login->first('password') }}</small></span>
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </div>
+                                    @endif
                         </div>
                         <div class="form-group form-check">
                             <a href="#contato"><small id="emailHelp" class="form-text text-right">Esqueceu sua
@@ -154,14 +179,6 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                            @if(session()->has('errorLogin'))
-                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                    <span>{{ session()->get('errorLogin') }}</span>
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                            @endif
                     <form method="POST" action={{ route('cadastro') }}>
                         <div class="form-group">
                             @csrf
@@ -170,14 +187,38 @@
                                 aria-describedby="emailHelp" placeholder="Seu email" name="email" value="{{ old('email') }}">
                             <small id="emailHelp" class="form-text text-muted">Nunca vamos compartilhar seu
                                 email.</small>
+                             @if($errors->cadastro->has('email'))
+                                 <br/>
+                                 <div class="alert alert-danger alert-dismissible fade show">
+                                            <span><small>{{ $errors->cadastro->first('email') }}</small></span>
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                </div>
+                            @endif
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1" class="font-weight-bold">Senha</label>
                             <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Senha">
+                              @if($errors->cadastro->has('password'))
+                                 <br/>
+                                 <div class="alert alert-danger alert-dismissible fade show">
+                                            <span><small>{{ $errors->cadastro->first('password') }}</small></span>
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                </div>
+                            @endif
                         </div>
                         <div class="form-group">
                             <label for="validationCustom01" class="font-weight-bold">Nome completo</label>
                             <input type="text" class="form-control" placeholder="Seu nome" name="nome_completo" value="{{ old('nome_completo')}}">
+                            @if($errors->cadastro->has('nome_completo'))
+                                 <br/>
+                                 <div class="alert alert-danger alert-dismissible fade show">
+                                            <span><small>{{ $errors->cadastro->first('nome_completo') }}</small></span>
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                </div>
+                            @endif
                         </div>
                         <div class="form-group">
                             <label for="validationCustom01" class="font-weight-bold">Empresa</label>
@@ -185,13 +226,9 @@
                         </div>
                         <div class="form-group">
                             <label for="validationCustom01" class="font-weight-bold">Telefone</label>
-                            <input type="number" class="form-control" name="telefone" value="{{ old('telefone') }}" value= placeholder="Telefone">
+                            <input type="number" class="form-control" name="telefone" value="{{ old('telefone') }}" placeholder="Telefone">
                         </div>
                         <div class="btnsub">
-                        {{-- <button type="submit" class="btn btn-primary" class="close" data-dismiss="modal"
-                            aria-label="Fechar" /onclick="funcao1()"value="Exibir Alert">
-                            CADASTRA-SE
-                        </button> --}}
                         <button type="submit" class="btn btn-primary" class="close" value="Exibir Alert">
                             CADASTRA-SE
                         </button>
@@ -202,26 +239,7 @@
         </div>
     </div>
 
-    @if ($errors->cadastro->any())
-        <p>erro no cadastro</p>
-    <div class="alert alert-danger">
-        @if($errors->cadastro->has('nome_completo'))
-            <span>{{ $errors->cadastro->first('nome_completo') }}</span>
-        @endif
-    </div>
-    @endif
-
-    @if ($errors->login->any())
-    <div class="alert alert-danger">
-        @if($errors->login->has('email'))
-            <span>{{ $errors->login->first('email') }}</span>
-        @endif
-    </div>
-    @endif
-        
-
-
-
+    
     <!--CAROUSEL BANNER-->
 
     <div id="carouselExampleSlidesOnly" class="carousel slide banner1" data-ride="carousel">

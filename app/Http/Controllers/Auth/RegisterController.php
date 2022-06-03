@@ -35,8 +35,6 @@ class RegisterController extends Controller
             return redirect()->route('index')->withErrors($validator, 'cadastro');
         } 
 
-        dd($request);
-
         $usuario = new User();
 
         $usuario->email = $request->email;
@@ -48,11 +46,9 @@ class RegisterController extends Controller
 
         $usuario->save();
 
-        $credentials = $usuario->only('email', 'password');
-
-        if (Auth::attempt($credentials)){
-           return view('perfil');
-       }
+        if (Auth::loginUsingId($usuario->id)){
+            return redirect()->route('perfil')->with(['message' => 'Cadastro realizado com sucesso']);
+        }
 
         return redirect()->route('index');
 
