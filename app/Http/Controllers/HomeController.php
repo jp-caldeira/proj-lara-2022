@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Produto;
 use App\Models\Servico;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,9 +33,12 @@ class HomeController extends Controller
 
     public function perfil()
     {
-        
         if(Auth::user()){
+
+            //$user = User::with('produtos', 'servicos')->find(Auth::user()->id);
+
             return view('perfil', ['user' => Auth::user()]);
+
         } else {
             return redirect()->route('index');
         }

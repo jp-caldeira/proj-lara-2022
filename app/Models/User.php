@@ -28,6 +28,12 @@ class User extends Authenticatable
         'created_at'
     ];
 
+    protected $with = ['produtos', 'servicos'];
+
+    protected $appends = [
+        'first_name'
+    ];
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -47,5 +53,14 @@ class User extends Authenticatable
     public function servicos()
     {
         return $this->belongsToMany(Servico::class, 'user_servico', 'usuario_id', 'servico_id');
+    }
+
+    public function getFirstNameAttribute(){
+        if (strpos($this->nome_completo, " ")){
+            return substr($this->nome_completo, 0, strpos($this->nome_completo, " "));
+        }
+
+        return $this->nome_completo;
+       
     }
 }

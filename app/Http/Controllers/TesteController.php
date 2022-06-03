@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Servico;
 use App\Models\TestTable;
 use App\Models\User;
 use DateTime;
@@ -17,9 +18,9 @@ class TesteController extends Controller
 
     public function hash()
     {
-        $hash_pipe = Hash::make("1234");
+        $hash = Hash::make("1234");
 
-        return $hash_pipe;
+        return $hash;
     }
 
     public function getUsuarios()
