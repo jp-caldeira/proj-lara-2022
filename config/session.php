@@ -155,7 +155,7 @@ return [
     |
     */
 
-    'domain' => env('SESSION_DOMAIN'),
+    'domain' => env('SESSION_DOMAIN', 'https://unisoft-app-2022.herokuapp.com/'),
 
     /*
     |--------------------------------------------------------------------------
