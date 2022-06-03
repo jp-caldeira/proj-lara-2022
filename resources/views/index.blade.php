@@ -74,7 +74,7 @@
 
         <!--BOTÃO LOGIN / CADASTRO-->
 
-                @if(Auth::user())                    
+                @if(Auth::user())
                 <div class="d-inline dropdown">
                     <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
