@@ -56,5 +56,7 @@ Route::get('/clean-paths', [ProdutoController::class, 'cleanPaths']);
 
 Route::get('/servicos', [ServicoController::class, 'getAllServices']);
 
+Route::get('/json-backup', [TesteController::class, 'jsonBackup']);
+
 
 

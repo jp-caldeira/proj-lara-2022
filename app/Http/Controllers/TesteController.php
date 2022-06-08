@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Produto;
 use App\Models\Servico;
 use App\Models\TestTable;
 use App\Models\User;
+use App\Models\UserProduto;
+use App\Models\UserServico;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -35,5 +38,18 @@ class TesteController extends Controller
 
         $user->save();
 
+    }
+
+    public function jsonBackup()
+    {
+        // $infos = UserServico::all();
+
+        // $infos = json_encode($infos);
+        // file_put_contents('user-servicos.json', $infos);
+
+        // $infos = UserProduto::all();
+
+        // $infos = json_encode($infos);
+        // file_put_contents('user-produtos.json', $infos);
     }
 }
