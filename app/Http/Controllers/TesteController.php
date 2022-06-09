@@ -51,5 +51,10 @@ class TesteController extends Controller
 
         // $infos = json_encode($infos);
         // file_put_contents('user-produtos.json', $infos);
+
+        dd(public_path('users.json'));
+
+        $users = User::all();
+        return $users;
     }
 }
