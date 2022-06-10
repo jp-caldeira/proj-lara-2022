@@ -1,8 +1,8 @@
-CREATE DATABASE UNISOFT
+CREATE DATABASE UNISOFT;
 
 -- Table: public."usuarios"
 
--- DROP TABLE IF EXISTS public."usuarios"
+DROP TABLE IF EXISTS public."usuarios";
 
 CREATE TABLE IF NOT EXISTS public."usuarios"
 (
@@ -16,9 +16,8 @@ CREATE TABLE IF NOT EXISTS public."usuarios"
     updated_at timestamp,
     CONSTRAINT "usuarios_pkey" PRIMARY KEY (id),
     CONSTRAINT "usuarios_email_key" UNIQUE (email)
-)
+);
 
-drop table usuarios 
 
 TABLESPACE pg_default;
 
@@ -28,7 +27,7 @@ ALTER TABLE IF EXISTS public."usuarios"
 	
 	-- Table: public.produtos
 
--- DROP TABLE IF EXISTS public."produtos"
+DROP TABLE IF EXISTS public."produtos"
 
 CREATE TABLE IF NOT EXISTS public."produtos"
 (
@@ -40,9 +39,8 @@ CREATE TABLE IF NOT EXISTS public."produtos"
     created_at timestamp,
     updated_at timestamp,
     CONSTRAINT "produtos_pkey" PRIMARY KEY (id)
-)
+);
 
-drop table public."produtos"
 
 TABLESPACE pg_default;
 
@@ -51,7 +49,7 @@ ALTER TABLE IF EXISTS public."produtos"
 		
 	-- Table: public.servicos
 
--- DROP TABLE IF EXISTS public."servicos";
+DROP TABLE IF EXISTS public."servicos";
 
 CREATE TABLE IF NOT EXISTS public."servicos"
 (
@@ -65,35 +63,42 @@ CREATE TABLE IF NOT EXISTS public."servicos"
     CONSTRAINT "servicos_pkey" PRIMARY KEY (id)
 )
 
-ALTER TABLE IF EXISTS system1."TB_SERVICOS"
+ALTER TABLE IF EXISTS public."servicos"
     OWNER to postgres;
 
 	
 	
 	-- Table: public."user_produto"
 
--- DROP TABLE IF EXISTS public."user_produto"
+DROP TABLE IF EXISTS public."user_produto";
 
 CREATE TABLE IF NOT EXISTS public."user_produto"
 (
     id SERIAL,   
     usuario_id integer,
     produto_id integer,
+    created_at timestamp,
+    updated_at timestamp,
     CONSTRAINT "user_produto_pkey" PRIMARY KEY (id)
-)
+);
 
 ALTER TABLE IF EXISTS public."user_produto"
     OWNER to postgres;
+
+
+-- Table: public."user_servico"
+
+DROP TABLE IF EXISTS public."user_servico";
 
 CREATE TABLE IF NOT EXISTS public."user_servico"
 (
     id SERIAL,   
     usuario_id integer,
     servico_id integer,
+    created_at timestamp,
+    updated_at timestamp,
     CONSTRAINT "user_servico_pkey" PRIMARY KEY (id)
-)
+);
 
 ALTER TABLE IF EXISTS public."user_servico"
     OWNER to postgres;
-    
-select * from usuarios

@@ -15,13 +15,18 @@ class UserServicoSeeder extends Seeder
      */
     public function run()
     {
-        $infos = json_decode(file_get_contents(public_path('user-servicos.json')));
+        $user_servicos = UserServico::all();
 
-        foreach($infos as $info){
-            UserServico::create([
-                "usuario_id" => $info->usuario_id,
-                "servico_id" => $info->servico_id,
-            ]);
+        if ($user_servicos->isEmpty()){
+
+            $infos = json_decode(file_get_contents(public_path('user-servicos.json')));
+
+            foreach($infos as $info){
+                UserServico::create([
+                    "usuario_id" => $info->usuario_id,
+                    "servico_id" => $info->servico_id,
+                ]);
+            }
         }
     }
 }

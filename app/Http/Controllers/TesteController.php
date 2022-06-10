@@ -52,12 +52,24 @@ class TesteController extends Controller
         // $infos = json_encode($infos);
         // file_put_contents('user-produtos.json', $infos);
 
+        // $infos = User::all();
+        // $infos = json_encode($infos);
+        // file_put_contents('users.json', $infos);
+
+        // $infos = Produto::all();
+        // $infos = json_encode($infos);
+        // file_put_contents('produtos.json', $infos);
+
+        // $infos = Servico::all();
+        // $infos = json_encode($infos);
+        // file_put_contents('servicos.json', $infos);
+
         //dd(public_path('produtos.json'));
-        $infos = json_decode(file_get_contents('user-servicos.json'));
-        $infos = collect($infos);
-        $infos = $infos->sortBy('id');
-        dd($infos);
-        $users = User::all();
-        return $users;
+        // $infos = json_decode(file_get_contents('user-servicos.json'));
+        // $infos = collect($infos);
+        // $infos = $infos->sortBy('id');
+        //dd($infos);
+        // $users = User::all();
+        // return $users;
     }
 }

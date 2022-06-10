@@ -15,19 +15,26 @@ class ServicoSeeder extends Seeder
      */
     public function run()
     {
-        $infos = json_decode(file_get_contents(public_path('servicos.json')));
+        $servicos = Servico::all();
 
-        $infos = collect($infos);
+        if ($servicos->isEmpty()){
+            
+            $infos = json_decode(file_get_contents(public_path('servicos.json')));
+        
+            $infos = collect($infos);
 
-        $infos = $infos->sortBy('id');
+            $infos = $infos->sortBy('id');
 
-        foreach($infos as $info){
-            Servico::create([
-                "title" => $info->title,
-                "title_modal" => $info->title_modal,
-                "icon_path" => $info->icon_path,
-                "description" => $info->description,
-            ]);
+            foreach($infos as $info){
+                Servico::create([
+                    "title" => $info->title,
+                    "title_modal" => $info->title_modal,
+                    "icon_path" => $info->icon_path,
+                    "description" => $info->description,
+                ]);
+            }
         }
+
+
     }
 }
