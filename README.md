@@ -1,3 +1,7 @@
+## Veja ao vivo
+
+https://unisoft-app-2022.herokuapp.com/
+
 ## Instruções
 
 1. Clonar projeto
@@ -15,11 +19,17 @@
 
 > php artisan key:generate
 
-5. Também no terminal, rode o servidor com o comando:
+5. Executar o arquivo Script-1.sql para criar as tabelas do banco
+
+6. Também no terminal, executar o comando para popular as tabelas:
+
+> php artisan db:seed
+
+7. Ainda no terminal, rode o servidor com o comando:
 
 > php artisan serve
 
-6. Uma mensagem como esta deverá aparecer no seu terminal:
+8. Uma mensagem como esta deverá aparecer no seu terminal:
 
 `Starting Laravel development server: http://127.0.0.1:8000 [Mon Oct 10 22:47:42 2021] PHP 7.4.14 Development Server (http://127.0.0.1:8000)`
 
