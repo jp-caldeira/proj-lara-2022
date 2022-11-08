@@ -15,17 +15,25 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $users = json_decode(file_get_contents(public_path('users.json')));
+        $all_users = User::all();
 
-        foreach($users as $user){
-            User::create([
-                "nome_completo" => $user->nome_completo,
-                "email" => $user->email,
-                "password" => $user->password,
-                "empresa" => $user->empresa,
-                "telefone" => $user->telefone,
-            ]);
+        if($all_users->isEmpty()){
+
+            $users = json_decode(file_get_contents(public_path('users.json')));
+        
+            foreach($users as $user){
+                User::create([
+                    "id" => $user->id,
+                    "nome_completo" => $user->nome_completo,
+                    "email" => $user->email,
+                    "password" => $user->password,
+                    "empresa" => $user->empresa,
+                    "telefone" => $user->telefone,
+                ]);
         }
+        }
+
+
 
     }
 }

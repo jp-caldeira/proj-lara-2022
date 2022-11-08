@@ -15,19 +15,26 @@ class ProdutoSeeder extends Seeder
      */
     public function run()
     {
-        $infos = json_decode(file_get_contents(public_path('produtos.json')));
+        $produtos = Produto::all();
 
-        $infos = collect($infos);
+        if ($produtos->isEmpty()){
 
-        $infos = $infos->sortBy('id');
+            $infos = json_decode(file_get_contents(public_path('produtos.json')));
+        
+            $infos = collect($infos);
 
-        foreach($infos as $info){
-            Produto::create([
+            $infos = $infos->sortBy('id');
+
+            foreach($infos as $info){
+                Produto::create([
                 "title" => $info->title,
                 "icon_path" => $info->icon_path,
                 "description" => $info->description,
                 "description_long" => $info->description_long
-            ]);
+                ]);
+            }
         }
+
+
     }
 }

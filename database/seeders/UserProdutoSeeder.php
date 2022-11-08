@@ -15,13 +15,20 @@ class UserProdutoSeeder extends Seeder
      */
     public function run()
     {
-        $infos = json_decode(file_get_contents(public_path('user-produtos.json')));
+        $user_produtos = UserProduto::all();
 
-        foreach($infos as $info){
-            UserProduto::create([
-                "usuario_id" => $info->usuario_id,
-                "produto_id" => $info->produto_id,
-            ]);
+        if ($user_produtos->isEmpty()){
+
+           $infos = json_decode(file_get_contents(public_path('user-produtos.json')));
+           
+            foreach($infos as $info){
+                UserProduto::create([
+                    "usuario_id" => $info->usuario_id,
+                    "produto_id" => $info->produto_id,
+                ]);
+            }
         }
+
+
     }
 }
